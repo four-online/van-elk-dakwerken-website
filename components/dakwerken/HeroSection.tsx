@@ -5,12 +5,20 @@ import React from 'react';
 export default function HeroSection() {
   return (
     <section className="relative bg-black overflow-hidden pt-16">
-      {/* Background image with overlay */}
+      {/*
+        HERO BACKGROUND: vanelk-team.jpg
+        WHY: 7 real team members on a rooftop, summer sky, company branded clothing.
+        Real faces = instant human trust. Group size signals capacity.
+        Converts better than any stock photo because visitors see the actual people
+        they're hiring — reduces "who is this company?" doubt immediately.
+      */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2940&auto=format&fit=crop"
-          alt="Dakwerken Den Haag"
-          className="w-full h-full object-cover opacity-30"
+          src="/images/vanelk-team.jpg"
+          srcSet="/images/vanelk-team-p-800.jpg 800w, /images/vanelk-team-p-1080.jpg 1080w, /images/vanelk-team.jpg 1600w"
+          sizes="100vw"
+          alt="Het team van Van Elk Dakwerken aan het werk"
+          className="w-full h-full object-cover object-center opacity-40"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/50" />
       </div>
@@ -21,26 +29,22 @@ export default function HeroSection() {
 
           {/* Left: Text */}
           <div className="flex flex-col justify-center">
-            {/* Trust badge */}
             <div className="inline-flex items-center gap-2 bg-red-600/20 border border-red-600/40 text-red-400 text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full mb-5 w-fit">
               <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse flex-shrink-0" />
               15+ jaar ervaring in Den Haag &amp; omgeving
             </div>
 
-            {/* Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight tracking-tight mb-4">
               Uw dak in{' '}
               <span className="text-red-500">topconditie</span>
               {' '}— binnen 24 uur een offerte
             </h1>
 
-            {/* Subheadline */}
             <p className="text-base sm:text-lg text-gray-300 mb-7 max-w-lg leading-relaxed">
               Van Elk Dakwerken repareert, renoveert en vernieuwt daken in Den Haag, Rijswijk en Zoetermeer.{' '}
               <strong className="text-white">Vakkundig, snel en met garantie.</strong>
             </p>
 
-            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 mb-4">
               <a
                 href="#contact"
@@ -63,13 +67,11 @@ export default function HeroSection() {
               </a>
             </div>
 
-            {/* Micro urgency */}
             <p className="text-yellow-400/80 text-xs font-medium mb-5 flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse flex-shrink-0" />
               Reactietijd vandaag: gemiddeld 47 minuten
             </p>
 
-            {/* Trust pills */}
             <div className="flex flex-wrap gap-2">
               {[
                 { icon: '✓', text: 'Gratis inspectie' },
@@ -103,21 +105,13 @@ export default function HeroSection() {
               <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Naam</label>
-                  <input
-                    type="text"
-                    placeholder="Uw volledige naam"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
-                    required
-                  />
+                  <input type="text" placeholder="Uw volledige naam" required
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Telefoonnummer</label>
-                  <input
-                    type="tel"
-                    placeholder="06 12 34 56 78"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
-                    required
-                  />
+                  <input type="tel" placeholder="06 12 34 56 78" required
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Type dakwerk</label>
@@ -131,10 +125,8 @@ export default function HeroSection() {
                     <option>Anders</option>
                   </select>
                 </div>
-                <button
-                  type="submit"
-                  className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg transition-colors text-sm shadow-md"
-                >
+                <button type="submit"
+                  className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg transition-colors text-sm shadow-md">
                   Stuur mijn aanvraag →
                 </button>
               </form>

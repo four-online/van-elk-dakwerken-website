@@ -4,46 +4,63 @@ import React, { useState } from 'react';
 
 const projects = [
   {
-    title: 'Plat dak renovatie',
-    location: 'Den Haag, Benoordenhout',
+    title: 'Dakrenovatie met steiger',
+    location: 'Den Haag',
+    type: 'Renovatie',
+    /*
+      thumb_auto-12.jpeg: BEST project photo — Van Elk branded banner visible on scaffold.
+      WHY: Company logo on a real jobsite = undeniable proof they did the work.
+      The branding in-context creates more trust than any testimonial.
+    */
+    image: '/images/project-steiger-banner.jpeg',
+    description: 'Complete dakrenovatie op woonhuis inclusief nieuwe isolatie en dakgoten. Van Elk banner zichtbaar op de steiger.',
+  },
+  {
+    title: 'Plat dak aanleg',
+    location: 'Rijswijk',
     type: 'Plat dak',
-    before: 'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?q=80&w=800&auto=format&fit=crop',
-    after: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop',
-    description: 'Volledig vernieuwd plat dak met EPDM folie, inclusief nieuwe dakrand en isolatie.',
+    /*
+      vanelk-platdak.jpg: Craftsman actively applying bitumen with torch.
+      WHY: Action shot of real work being done = competence signal.
+      Visitors see the actual technique, not a finished photo — this builds
+      confidence in the process, not just the result.
+    */
+    image: '/images/vanelk-platdak.jpg',
+    description: 'Nieuw plat dak met bitumen dakbedekking. Professionele aanleg met brander voor optimale hechting.',
   },
   {
     title: 'Pannendak herstel',
-    location: 'Rijswijk',
-    type: 'Pannendak',
-    before: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop',
-    after: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop',
-    description: 'Vervanging van gebroken dakpannen en nokvorst, nieuwe dakbedekking onder de pannen.',
-  },
-  {
-    title: 'Dakrenovatie jaren 30 woning',
     location: 'Zoetermeer',
-    type: 'Renovatie',
-    before: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop',
-    after: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=800&auto=format&fit=crop',
-    description: 'Volledige dakrenovatie inclusief isolatie upgrade en nieuwe dakgoten.',
+    type: 'Pannendak',
+    /*
+      pannendak-werk.jpeg (whatsapp-2024-08-28): Roofer on pantile roof with nail gun, smiling.
+      WHY: The smile + tool in hand = confident craftsman. Smile reduces anxiety
+      about "will this be a stressful process?" — turns a service into an experience.
+    */
+    image: '/images/pannendak-werk.jpeg',
+    description: 'Herstel en vervanging van beschadigde dakpannen. Nokvorst vernieuwd en dakbedekking gecontroleerd.',
   },
   {
-    title: 'Lekkage reparatie spoed',
-    location: 'Den Haag, Centrum',
-    type: 'Reparatie',
-    before: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop',
-    after: 'https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=800&auto=format&fit=crop',
-    description: 'Spoedinterventie bij ernstige daklekkage — zelfde dag nog gerepareerd.',
+    title: 'Grootschalig dakproject',
+    location: 'Delft',
+    type: 'Groot project',
+    /*
+      Delft1.JPG: Night-time aerial of large apartment building + crane.
+      WHY: Scale proof. Most visitors wonder "can they handle my job?"
+      A multi-floor apartment + crane answers: yes, even the big ones.
+      The dramatic night light adds emotional impact.
+    */
+    image: '/images/project-delft.jpg',
+    description: 'Dakrenovatie op meerdere etages in Delft. Inzet van kraan voor efficiënte materiaaltoevoer.',
   },
 ];
 
 export default function ProjectsSection() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [active, setActive] = useState<number | null>(null);
 
   return (
     <section id="projecten" className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Header */}
         <div className="text-center mb-14">
           <span className="inline-block bg-red-50 text-red-600 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4">
             Onze projecten
@@ -52,60 +69,30 @@ export default function ProjectsSection() {
             Resultaten die voor zichzelf spreken
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto text-lg">
-            Bekijk een selectie van onze recente dakwerkzaamheden in Den Haag en omgeving.
+            Echte projecten van ons team in Den Haag, Rijswijk, Zoetermeer en Delft.
           </p>
         </div>
 
-        {/* Projects grid */}
         <div className="grid sm:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="group rounded-2xl overflow-hidden border border-gray-200 hover:border-red-300 hover:shadow-xl transition-all duration-300"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
+              className="group rounded-2xl overflow-hidden border border-gray-200 hover:border-red-300 hover:shadow-xl transition-all duration-300 cursor-pointer"
+              onMouseEnter={() => setActive(index)}
+              onMouseLeave={() => setActive(null)}
             >
-              {/* Before/After image */}
               <div className="relative h-56 overflow-hidden bg-gray-100">
-                {/* Before image */}
                 <img
-                  src={project.before}
-                  alt={`Voor - ${project.title}`}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                    hoveredIndex === index ? 'opacity-0' : 'opacity-100'
-                  }`}
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={{ objectPosition: project.type === 'Groot project' ? 'center 30%' : 'center center' }}
                 />
-                {/* After image */}
-                <img
-                  src={project.after}
-                  alt={`Na - ${project.title}`}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                    hoveredIndex === index ? 'opacity-100' : 'opacity-0'
-                  }`}
-                />
-                {/* Label */}
-                <div className="absolute top-3 left-3 z-10">
-                  <span className={`text-xs font-bold px-2.5 py-1 rounded-full transition-colors duration-300 ${
-                    hoveredIndex === index
-                      ? 'bg-green-600 text-white'
-                      : 'bg-black/70 text-white'
-                  }`}>
-                    {hoveredIndex === index ? 'NA' : 'VOOR'}
-                  </span>
-                </div>
-                {/* Hover hint */}
-                {hoveredIndex !== index && (
-                  <div className="absolute bottom-3 right-3 z-10 bg-black/60 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                    Hover voor resultaat →
-                  </div>
-                )}
-                {/* Type badge */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-2.5 py-1 rounded-full z-10">
                   {project.type}
                 </span>
               </div>
-
-              {/* Content */}
               <div className="p-5">
                 <h3 className="font-bold text-gray-900 text-lg mb-1">{project.title}</h3>
                 <div className="flex items-center gap-1 text-gray-500 text-sm mb-2">
@@ -121,17 +108,48 @@ export default function ProjectsSection() {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="mt-12 text-center">
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg"
-          >
-            Laat uw dak ook renoveren
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
+        {/* Video proof block */}
+        <div className="mt-12 rounded-2xl overflow-hidden bg-gray-950 border border-gray-800">
+          <div className="grid md:grid-cols-2 gap-0 items-center">
+            {/*
+              VIDEO: van-der-elk-dakdekking-video-2-1.mp4
+              WHY: Close-up of craftsman burning bitumen — hands, tools, technique visible.
+              Placed here (after photo grid) as the final convincing proof layer.
+              Video shows PROCESS, not just result → converts undecided visitors
+              who want to see "how do they actually work?"
+              NOT a background video — inline, controlled, no distraction.
+            */}
+            <div className="relative aspect-video bg-black">
+              <video
+                className="w-full h-full object-cover"
+                poster="/videos/video-poster.jpg"
+                controls
+                preload="none"
+                playsInline
+              >
+                <source src="/videos/van-der-elk-dakdekking-video-2-1.mp4" type="video/mp4" />
+                <source src="/videos/van-der-elk-dakdekking-video-2-1-transcode.webm" type="video/webm" />
+              </video>
+            </div>
+            <div className="p-8 text-white">
+              <span className="inline-block bg-red-600/20 text-red-400 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4">
+                Bekijk ons vakmanschap
+              </span>
+              <h3 className="text-2xl font-extrabold mb-3">Zo werkt ons team</h3>
+              <p className="text-gray-400 leading-relaxed mb-6">
+                Professionele aanleg van bitumendakbedekking. Onze dakdekkers gebruiken de juiste technieken en materialen voor een duurzaam resultaat met 5 jaar garantie.
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded-lg transition-colors"
+              >
+                Vraag een offerte aan
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
