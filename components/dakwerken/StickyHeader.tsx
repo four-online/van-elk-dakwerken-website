@@ -19,7 +19,7 @@ export default function StickyHeader() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16 sm:h-18">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="/" className="flex items-center gap-2">
             <div className="w-8 h-8 bg-red-600 rounded flex items-center justify-center">
