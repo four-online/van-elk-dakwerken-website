@@ -1,24 +1,22 @@
 /**
- * Van Elk Dakwerken — CRO-Optimized Homepage
+ * Van Elk Dakwerken — Homepage
  *
- * Page structure (conversion-first order):
- * 1.  StickyHeader      — always-visible CTA + phone
- * 2.  HeroSection       — outcome headline + dual CTA + quick form
- * 3.  TrustBar          — stats + certifications (credibility shock)
- * 4.  ServicesSection   — clickable service cards → dedicated landing pages
- * 5.  USPSection        — objection removal
- * 6.  ProjectsSection   — before/after visual proof
- * 7.  ReviewsSection    — social proof
- * 8.  EmergencyCTA      — urgency capture (leaks, storm damage)
- * 9.  AboutSection      — humanize the brand
- * 10. ContactForm       — final conversion (form + phone + WhatsApp)
- * 11. Footer            — SEO location links
- * 12. FloatingButtons   — persistent WhatsApp + call + offerte CTAs
- *
- * SEO:
- * - H1: "Uw dak in topconditie — binnen 24 uur een offerte"
- * - H2s: service section, USP section, projects, reviews, emergency, about, contact
- * - Location targeting: Den Haag, Rijswijk, Zoetermeer (in copy + footer links)
+ * Page structure (aligned with kkfh-nl design language):
+ * 1.  StickyHeader        — always-visible CTA + phone
+ * 2.  HeroSection         — outcome headline + dual CTA + quick form
+ * 3.  TrustBar            — stats + certifications (credibility shock)
+ * 4.  ServicesSection     — product offerings (service cards)
+ * 5.  USPSection          — unique selling points / objection removal
+ * 6.  RenovationPlans     — renovation packages (inspection → repair → full reno)
+ * 7.  ReviewsSection      — customer testimonials
+ * 8.  ProjectsSection     — customer experience showcase + video proof
+ * 9.  ImpressionGallery   — impression gallery / visual portfolio
+ * 10. ResourceGrid        — FAQ resource grid
+ * 11. EmergencyCTA        — quality & service guarantee + urgency capture
+ * 12. AboutSection        — value proposition / brand story
+ * 13. ContactForm         — final conversion (form + phone + WhatsApp)
+ * 14. Footer              — SEO location links
+ * 15. FloatingButtons     — mobile panel / persistent CTAs
  *
  * Dependencies: Tailwind CSS, React 18+
  * No external UI libraries required — all components are self-contained.
@@ -30,8 +28,11 @@ import HeroSection from './HeroSection';
 import TrustBar from './TrustBar';
 import ServicesSection from './ServicesSection';
 import USPSection from './USPSection';
-import ProjectsSection from './ProjectsSection';
+import RenovationPlans from './RenovationPlans';
 import ReviewsSection from './ReviewsSection';
+import ProjectsSection from './ProjectsSection';
+import ImpressionGallery from './ImpressionGallery';
+import ResourceGrid from './ResourceGrid';
 import EmergencyCTA from './EmergencyCTA';
 import AboutSection from './AboutSection';
 import ContactForm from './ContactForm';
@@ -41,49 +42,49 @@ import FloatingButtons from './FloatingButtons';
 export default function HomePage() {
   return (
     <>
-      {/* SEO Meta — add to <head> via Next.js metadata API or Helmet */}
-      {/*
-        title: "Dakwerken Den Haag | Van Elk Dakwerken — Offerte binnen 24 uur"
-        description: "Gecertificeerd dakdekkersbedrijf in Den Haag, Rijswijk en Zoetermeer.
-          Daklekkage, dakrenovatie, plat dak en meer. 15+ jaar ervaring. Gratis offerte."
-        keywords: "dakwerken Den Haag, dakdekker Den Haag, daklekkage reparatie, dakrenovatie,
-          dakwerken Rijswijk, dakwerken Zoetermeer, plat dak Den Haag"
-      */}
-
       <StickyHeader />
 
       <main>
-        {/* SECTION 1: Hero — primary conversion point */}
+        {/* 1. Hero — primary conversion point */}
         <HeroSection />
 
-        {/* SECTION 2: TrustBar — instant credibility */}
+        {/* 2. TrustBar — instant credibility */}
         <TrustBar />
 
-        {/* SECTION 3: Services — navigation to dedicated landing pages */}
+        {/* 3. Services — product offerings */}
         <ServicesSection />
 
-        {/* SECTION 4: USP — remove objections */}
+        {/* 4. USP — unique selling points */}
         <USPSection />
 
-        {/* SECTION 5: Projects — visual proof */}
-        <ProjectsSection />
+        {/* 5. Renovation plans — inspection → repair → full reno */}
+        <RenovationPlans />
 
-        {/* SECTION 6: Reviews — social proof */}
+        {/* 6. Customer testimonials */}
         <ReviewsSection />
 
-        {/* SECTION 7: Emergency CTA — urgency capture */}
+        {/* 7. Customer experience showcase + video */}
+        <ProjectsSection />
+
+        {/* 8. Impression gallery */}
+        <ImpressionGallery />
+
+        {/* 9. FAQ resource grid */}
+        <ResourceGrid />
+
+        {/* 10. Emergency CTA / quality guarantee */}
         <EmergencyCTA />
 
-        {/* SECTION 8: About — brand trust */}
+        {/* 11. About / value proposition */}
         <AboutSection />
 
-        {/* SECTION 9: Contact form — final conversion */}
+        {/* 12. Contact form — final conversion */}
         <ContactForm />
       </main>
 
       <Footer />
 
-      {/* Floating CTAs — persistent conversion layer */}
+      {/* Mobile panel / floating CTAs */}
       <FloatingButtons />
     </>
   );
