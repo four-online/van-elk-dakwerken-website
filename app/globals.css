@@ -1,24 +1,23 @@
 @import "tailwindcss";
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-html,
-body {
-  width: 100%;
-  overflow-x: hidden;
-}
+  html {
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
 
-body {
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  background: #fff;
-  color: #111;
-}
-
-/* Smooth scrolling for anchor links */
-html {
-  scroll-behavior: smooth;
+  body {
+    width: 100%;
+    overflow-x: hidden;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    background: #fff;
+    color: #111;
+  }
 }
